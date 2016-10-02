@@ -8,7 +8,7 @@ layout: post
 
 书是好书，但是要有一定的编程经历。大概和Gof的《编程模式》有些类似，估计销量不会高到那里去。不过还是建议立志于提高自己的猿们读一读，的确物超所值。[图书详情](http://www.epubit.com.cn/book/details/4184)
 
-![游戏编程模式](./img/game_programming.jpg)
+![游戏编程模式](/img/game_programming.jpg)
 
 
 
