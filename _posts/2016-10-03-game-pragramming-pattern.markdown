@@ -1,5 +1,5 @@
 ---
-title: 游戏编程模式发售
+title: 《游戏编程模式》发售
 layout: post
 ---
 
