@@ -1,1 +1,1 @@
-Sitemap: https://zsai001.org/sitemap.xml
+Sitemap: http://zsai001.org/sitemap.xml
