@@ -1,0 +1,91 @@
+Configuration file: /Users/zsai/tsiannian/_config.yml
+Configuration file: /Users/zsai/tsiannian/_config.yml
+            Source: /Users/zsai/tsiannian
+       Destination: /Users/zsai/tsiannian/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 0.285 seconds.
+ Auto-regeneration: enabled for '/Users/zsai/tsiannian'
+Configuration file: /Users/zsai/tsiannian/_config.yml
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:56:09 ...done in 0.133103 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:56:15 ...done in 0.105068 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:56:18 ...done in 0.100596 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:57:21 ...done in 0.141345 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:57:25 ...done in 0.142928 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:57:39 ...done in 0.138238 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:57:50 ...done in 0.139541 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:57:53 ...done in 0.16797 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:00 ...done in 0.152255 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:03 ...done in 0.148112 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:05 ...done in 0.150331 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:07 ...done in 0.147677 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:24 ...done in 0.155358 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:58:28 ...done in 0.153789 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:24 ...done in 0.157941 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:32 ...done in 0.146 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:34 ...done in 0.146781 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:35 ...done in 0.155215 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:41 ...done in 0.146158 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 21:59:41 ...done in 0.147745 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:10 ...done in 0.148465 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:21 ...done in 0.152661 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:36 ...done in 0.152551 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:38 ...done in 0.149673 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:39 ...done in 0.151269 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:47 ...done in 0.14661 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:52 ...done in 0.146083 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:53 ...done in 0.154233 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:55 ...done in 0.147507 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:05:59 ...done in 0.148612 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:00 ...done in 0.147562 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:00 ...done in 0.147655 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:01 ...done in 0.145434 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:06 ...done in 0.14761 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:07 ...done in 0.15057 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:09 ...done in 0.148775 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:11 ...done in 0.142796 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:14 ...done in 0.146309 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:19 ...done in 0.149236 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:24 ...done in 0.142755 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:26 ...done in 0.152885 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:28 ...done in 0.153715 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:36 ...done in 0.146035 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:06:40 ...done in 0.150289 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:07 [31m             Error: could not read file /Users/zsai/tsiannian/_posts/2017-05-25-another-golang-redis-driver.markdown: (<unknown>): could not find expected ':' while scanning a simple key at line 4 column 1[0m
+...done in 0.138766 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:11 ...done in 0.149466 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:13 [31m             Error: could not read file /Users/zsai/tsiannian/_posts/2017-05-25-another-golang-redis-driver.markdown: (<unknown>): did not find expected key while parsing a block mapping at line 2 column 1[0m
+...done in 0.133965 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:21 ...done in 0.154166 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:23 ...done in 0.156853 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:26 ...done in 0.151302 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:27 ...done in 0.152065 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:39 ...done in 0.15214 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:40 ...done in 0.15465 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:43 ...done in 0.152155 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:47 ...done in 0.158971 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:48 ...done in 0.149271 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:07:50 ...done in 0.149977 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:08:08 ...done in 0.156385 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:09:15 ...done in 0.156345 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:09:24 ...done in 0.175044 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:09:27 ...done in 0.157141 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:09:28 ...done in 0.14853 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:09:46 ...done in 0.147075 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:10:43 ...done in 0.154331 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:11:05 ...done in 0.154075 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:11:05 ...done in 0.151784 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:17:59 ...done in 0.153366 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:18:02 ...done in 0.155894 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:18:05 ...done in 0.153176 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:18:06 ...done in 0.151758 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:24:08 ...done in 0.144802 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:24:18 ...done in 0.159433 seconds.
+      Regenerating: 1 file(s) changed at 2017-05-25 22:25:13 ...done in 0.140697 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:25:25 ...done in 0.145415 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:25:29 ...done in 0.145661 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:25:31 ...done in 0.145 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:25:31 ...done in 0.146371 seconds.
+      Regenerating: 2 file(s) changed at 2017-05-25 22:25:49 ...done in 0.145777 seconds.

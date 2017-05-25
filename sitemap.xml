@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://zsai001.org/2016/10/03/game-pragramming-pattern/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://zsai001.org/2017/05/25/another-golang-redis-driver/</loc>
+<lastmod>2017-05-25T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://zsai001.org/wiki/markdown/</loc>
+<lastmod>2017-05-25T23:58:05+08:00</lastmod>
+</url>
+<url>
+<loc>http://zsai001.org/wiki/template/</loc>
+<lastmod>2017-05-25T23:58:05+08:00</lastmod>
+</url>
+<url>
+<loc>http://zsai001.org/404.html</loc>
+</url>
+<url>
+<loc>http://zsai001.org/about/</loc>
+</url>
+<url>
+<loc>http://zsai001.org/categories/</loc>
+</url>
+<url>
+<loc>http://zsai001.org/</loc>
+</url>
+<url>
+<loc>http://zsai001.org/links/</loc>
+</url>
+<url>
+<loc>http://zsai001.org/wiki/</loc>
+</url>
+</urlset>
