@@ -27,7 +27,13 @@
 
     <div class="main">
         <h2> Radix.v3 另一款Golang Redis 驱动 </h2>
-        <p><code class="highlighter-rouge">Radix.v3</code> 是在 <a href="https://github.com/mediocregopher/radix.v2">Radix</a> 基础上改造过来的，主要是借鉴了<a href="https://github.com/alphazero/Go-Redis">Go-Redis</a> 的异步方式。当时我们项目急切需要一个比较好用的<code class="highlighter-rouge">Redis</code>驱动，在官网上推荐的只有两个，在比较之后我们选择了radix。在之后的考察中，我们发现了<code class="highlighter-rouge">Go-Redis</code>，并被<code class="highlighter-rouge">Go-Redis</code>的性能所折服，打算使用这个ops极高的驱动，但是它的代码是在是太老了，而且并不适合业务开发。所以我花了1天半在<code class="highlighter-rouge">Radix.v2</code>上改造了一番，在底层使用了异步工作方式，在外层保留了同步调用的接口。这分代码开源了10天左右，人气不高，后来发现了一个比较严重的bug，意识到不能误人子弟，所以取消了共享，打算在内部改造成熟之后再开放出来。</p>
+        <p><code class="highlighter-rouge">Radix.v3</code> 是在 <a href="https://github.com/mediocregopher/radix.v2">Radix</a> 基础上改造过来的，
+主要是借鉴了<a href="https://github.com/alphazero/Go-Redis">Go-Redis</a> 的异步方式。当时我们项目
+急切需要一个比较好用的<code class="highlighter-rouge">Redis</code>驱动，在官网上推荐的只有两个，在比较之后我们选择了radix。在之后
+的考察中，我们发现了<code class="highlighter-rouge">Go-Redis</code>，并被<code class="highlighter-rouge">Go-Redis</code>的性能所折服，打算使用这个ops极高的驱动，但是
+它的代码是在是太老了，而且并不适合业务开发。所以我花了1天半在<code class="highlighter-rouge">Radix.v2</code>上改造了一番，在底层使
+用了异步工作方式，在外层保留了同步调用的接口。这分代码开源了10天左右，人气不高，后来发现了一个
+比较严重的bug，意识到不能误人子弟，所以取消了共享，打算在内部改造成熟之后再开放出来。</p>
 
 <h3 id="改造原理">改造原理</h3>
 
@@ -42,7 +48,8 @@
 </span><span class="p">}</span><span class="x">
 </span></code></pre>
 </div>
-<p>他在底层中，使用的 <code class="highlighter-rouge">send &amp;&amp; recv</code> 的方式, 这个是同步调用模式，受限于网络延时，单连接最高的ops取决于两机的ping值，所以一般的bench在1w ops左右。</p>
+<p>他在底层中，使用的 <code class="highlighter-rouge">send &amp;&amp; recv</code> 的方式, 这个是同步调用模式，受限于网络延时，单连接最高
+的ops取决于两机的ping值，所以一般的bench在1w ops左右。</p>
 
 <p>在Go-Redis中一个调用如下：</p>
 
@@ -60,15 +67,26 @@
 </span></code></pre>
 </div>
 
-<p>他们之间的区别在于<code class="highlighter-rouge">Go-Redis</code>返回的是一个<code class="highlighter-rouge">Future</code>对象，如果想要拿到结果，则必须再<code class="highlighter-rouge">Get</code>一次。这样做可以将<code class="highlighter-rouge">send</code> 和 <code class="highlighter-rouge">recv</code> 完全分开，tcp 连接处于完全双工的模式进行流处理。具体代码的细节可以参考<code class="highlighter-rouge">Go-Redis</code>的实现。实践表明，这种处理方式单链接可以达到40w ops。</p>
+<p>他们之间的区别在于<code class="highlighter-rouge">Go-Redis</code>返回的是一个<code class="highlighter-rouge">Future</code>对象，如果想要拿到结果，则必须再<code class="highlighter-rouge">Get</code>一次。这样
+做可以将<code class="highlighter-rouge">send</code> 和 <code class="highlighter-rouge">recv</code> 完全分开，tcp 连接处于完全双工的模式进行流处理。具体代码的细节可以参考
+<code class="highlighter-rouge">Go-Redis</code>的实现。实践表明，这种处理方式单链接可以达到40w ops。</p>
 
 <h3 id="优势与限制">优势与限制</h3>
 
-<p>你可能认识到，在<code class="highlighter-rouge">Go-Redis</code>中使用单协程，同样也只能达到1w 左右ops。它的优势是协程安全的，并且单连接能够有效的保证时序性。在Radix中，想要达到高的ops，只能开链接池，在原来的<code class="highlighter-rouge">Radix</code>中，连接池是动态增长的，如果你用1w 协程去打压力，基本上处于不可用状态。有鉴于此，我修改了底层的pool,让他固定的连接个数为1，之所以还要保持一个pool，则主要是复用连接重连的代码。此外，另外一个无法比拟的优势在于他的延时不敏感性，我们的服务器部署在3个不同的机房，每个机房不同的ping值在1ms~3ms之间,如果采用传统的驱动，基本上不能完成正常的业务处理，但是使用这个驱动，则不会受到延时的影响导致性能大幅度降低。</p>
+<p>你可能认识到，在<code class="highlighter-rouge">Go-Redis</code>中使用单协程，同样也只能达到1w 左右ops。它的优势是协程安全的，并且单
+连接能够有效的保证时序性。在Radix中，想要达到高的ops，只能开链接池，在原来的<code class="highlighter-rouge">Radix</code>中，连接池
+是动态增长的，如果你用1w 协程去打压力，基本上处于不可用状态。有鉴于此，我修改了底层的pool,让他
+固定的连接个数为1，之所以还要保持一个pool，则主要是复用连接重连的代码。此外，另外一个无法比拟的
+优势在于他的延时不敏感性，我们的服务器部署在3个不同的机房，每个机房不同的ping值在1ms~3ms之间,如
+果采用传统的驱动，基本上不能完成正常的业务处理，但是使用这个驱动，则不会受到延时的影响导致性能大幅度降低。</p>
 
 <h3 id="20w有序持久化队列">20w有序持久化队列</h3>
 
-<p>在开源的队列服务器中，能达到10w级别的队列服务器并不是没有，但是并不是有序的，能保证有序的也有，但是不能保证持久化，不过利用Radix.v3能够达到这一点。主要的要点是使用<code class="highlighter-rouge">BPOP</code>操作来避免无效的<code class="highlighter-rouge">POP</code>调用，第二个要点是要预发送<code class="highlighter-rouge">BPOP</code>指令，要达到10w级别，起码要预发送10条指令，第三是要做第二次分片，把业务分配到不同的协程中去处理。按业务的需求来说，有全局有序，这点是业务决定的，和队列其实没关系。还有就是用户有序，这点按用户协程分配即可处理。相关代码如下:</p>
+<p>在开源的队列服务器中，能达到10w级别的队列服务器并不是没有，但是并不是有序的，能保证有序的也有，但
+是不能保证持久化，不过利用Radix.v3能够达到这一点。主要的要点是使用<code class="highlighter-rouge">BPOP</code>操作来避免无效的<code class="highlighter-rouge">POP</code>调
+用，第二个要点是要预发送<code class="highlighter-rouge">BPOP</code>指令，要达到10w级别，起码要预发送10条指令，第三是要做第二次分片，把
+业务分配到不同的协程中去处理。按业务的需求来说，有全局有序，这点是业务决定的，和队列其实没关系。还
+有就是用户有序，这点按用户协程分配即可处理。相关代码如下:</p>
 
 <div class="language-golang highlighter-rouge"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">q</span><span class="x"> </span><span class="o">*</span><span class="n">QueueRedis</span><span class="p">)</span><span class="x"> </span><span class="n">GetFutureMsg</span><span class="p">(</span><span class="n">msg_key</span><span class="x"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span><span class="x"> </span><span class="o">*</span><span class="n">redis</span><span class="o">.</span><span class="n">Future</span><span class="x"> </span><span class="p">{</span><span class="x">
     </span><span class="k">return</span><span class="x"> </span><span class="n">q</span><span class="o">.</span><span class="n">FCmd</span><span class="p">(</span><span class="s">"BRPOP"</span><span class="p">,</span><span class="x"> </span><span class="n">msg_key</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
@@ -97,6 +115,7 @@
 </div>
 
 
+        <p>讨论请加 QQ group: 549675095 </p>
         
         <div class="post_footer">
           <p>Published on May 25, 2017 in categories 
@@ -115,6 +134,11 @@
                 <a href="/2016/10/03/game-pragramming-pattern/">《游戏编程模式》发售</a>
             </li>
             
+            
+            <li>
+                <span>下一篇</span>
+                <a href="/2017/06/19/how-to-write-an-echo-server1/">从回声服务器到网络框架(1)--Echo Server</a>
+            </li>
             
         </ul>
         <hr>
