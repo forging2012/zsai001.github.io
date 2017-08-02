@@ -1,0 +1,23 @@
+<h3 id="处理二进制数据">处理二进制数据</h3>
+
+<p>socks服务器主要是处理二进制数据，而不是基于文本的数据。要程序的处理好Echo服务器面对的问题，基础便是要知道如何处理二进制内容。golang原生有个”encoding/binary” 就是用来处理二进制的。他主要分为打包和解包两种。</p>
+
+<div class="language-golang highlighter-rouge"><pre class="highlight"><code><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="x"> </span><span class="m">2</span><span class="p">)</span><span class="x">
+    </span><span class="n">binary</span><span class="o">.</span><span class="n">LittleEndian</span><span class="o">.</span><span class="n">PutUint16</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="x">
+
+    </span><span class="n">num</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">binary</span><span class="o">.</span><span class="n">LittleEndian</span><span class="o">.</span><span class="n">Uint16</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="x"> </span><span class="n">num</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre>
+</div>
+
+<p>上面的代码简单的演示了如何用binary进行打包和解包，在服务器之间想要正确的传递信息，就需要知道发送和接受的数据是如何进行组织的。在发送之前将数据进行二进制打包，在接受的时候用二进制进行解包。这样我们就完成了服务器之前的数据通讯。而这种相互约定的通讯方式，我们称之为协议。设计一个好的协议并不容易，因为通讯之间要解决的问题错综复杂，而且还要兼顾效率和可靠。为了进可能降低沟通之间的复杂度，一般将协议进行分层设计。每一层解决一个特定的问题。这样能极大的复用代码，提高可靠性。</p>
+
+<p>在一般的服务器开发中，首先要解决的是将tcp这种基于流的接口转换为基于包的接口。比如客户端发送一段数据，接受端要明确知道这段数据是否已经完整的接受到了，后面
+还会不会发送额外的数据，一种简单的解决这种问题的策略是每段数据前2个字节存放数据段的长度。服务段开始受到数据，满2个字节之后，便清楚下面还需要接受多少数据才算一次完整的请求。4字节能存放int32，我们知道这能表示4G的数据，所以一般用2字节表示，能存int16 max的数据，大概是32K，绝大情况下是足够了，如果不够我们可以进行分包处理。如果只用长度的header，会面临一个问题，无法检测数据段的合法性。而且一旦字节流错误，会使链接陷入无法恢复的境地。可以考虑在数据段的结尾加上特点的标识符比如<code class="highlighter-rouge">##</code>，这样既可以校验数据，也可以比较容易的识别出下一个有效数据段。</p>
+
+<p>解决了分包，一般后面需要处理的是加上包类型。</p>
